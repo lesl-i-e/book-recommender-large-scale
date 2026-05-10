@@ -10,11 +10,11 @@ A complete, end-to-end large-scale recommendation system built on the Book-Cross
 
 | Name | Registration Number |
 |------|-------------------|
-| Rodney Okoth | | SCT213-C002-0063/2022
-| Sandra Jebet | | SCT213-C002-0117/2022
-| Effie Auma | | SCT213-C002-0077/2022
-| Leslie Gideon | | SCT213-C002-0062/2022
-| Kandy Genga | | SCT213-C002-00__/2022
+| Rodney Okoth | SCT213-C002-0063/2022 | 
+| Sandra Jebet | SCT213-C002-0117/2022 | 
+| Effie Auma | SCT213-C002-0077/2022 | 
+| Leslie Gideon | SCT213-C002-0062/2022 | 
+| Kandy Genga | SCT213-C002-00__/2022 | 
 
 ---
 
