@@ -26,150 +26,182 @@ st.set_page_config(
 )
 
 # ─────────────────────────────────────────────────────────────
-# CUSTOM CSS — Deep navy + amber + cream editorial aesthetic
+# CUSTOM CSS — Refined dark editorial: ink + gold + ivory
 # ─────────────────────────────────────────────────────────────
 st.markdown("""
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600&display=swap');
 
 /* ── Root variables ── */
 :root {
-    --navy:    #0f1f3d;
-    --navy2:   #162848;
-    --amber:   #d4922a;
-    --amber2:  #f0b849;
-    --cream:   #f5f0e8;
-    --cream2:  #ede5d8;
-    --text:    #1a1a2e;
-    --muted:   #6b7280;
-    --success: #16a34a;
-    --card-bg: #ffffff;
-    --border:  #e5ddd0;
+    --ink:      #0d1117;
+    --ink2:     #161b22;
+    --ink3:     #1c2330;
+    --gold:     #c9922a;
+    --gold2:    #e8b84b;
+    --gold3:    #f5d37a;
+    --ivory:    #f7f3ec;
+    --ivory2:   #ede8df;
+    --ivory3:   #e2dbd0;
+    --text:     #1c1c28;
+    --muted:    #64748b;
+    --card-bg:  #ffffff;
+    --border:   #e8e0d4;
+    --shadow:   rgba(13,17,23,0.10);
 }
 
 /* ── Global resets ── */
 html, body, [class*="css"] {
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'Outfit', sans-serif;
     color: var(--text);
 }
 
-/* ── App background ── */
+/* ── App background — parchment with very subtle noise ── */
 .stApp {
-    background: var(--cream);
+    background: var(--ivory);
     background-image:
-        radial-gradient(ellipse at 10% 0%, rgba(212,146,42,0.08) 0%, transparent 60%),
-        radial-gradient(ellipse at 90% 100%, rgba(15,31,61,0.06) 0%, transparent 60%);
+        radial-gradient(ellipse 80% 50% at 5% 0%, rgba(201,146,42,0.07) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 40% at 95% 100%, rgba(13,17,23,0.05) 0%, transparent 60%),
+        url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.018'/%3E%3C/svg%3E");
 }
 
 /* ── Main block padding ── */
 .block-container {
-    padding: 2rem 3rem 4rem 3rem !important;
-    max-width: 1200px;
+    padding: 2.5rem 3.5rem 5rem 3.5rem !important;
+    max-width: 1180px;
 }
 
-/* ── Sidebar ── */
+/* ── Sidebar — compact dark column ── */
 [data-testid="stSidebar"] {
-    background: var(--navy) !important;
-    border-right: 1px solid rgba(212,146,42,0.3);
+    background: var(--ink) !important;
+    border-right: 1px solid rgba(201,146,42,0.18) !important;
+    min-width: 220px !important;
+    max-width: 240px !important;
+}
+[data-testid="stSidebar"] > div:first-child {
+    padding-top: 0 !important;
+}
+section[data-testid="stSidebar"] > div {
+    width: 220px !important;
 }
 [data-testid="stSidebar"] * {
-    color: var(--cream) !important;
+    color: var(--ivory) !important;
 }
 [data-testid="stSidebar"] .stSelectbox label,
 [data-testid="stSidebar"] .stSlider label,
 [data-testid="stSidebar"] p {
-    color: rgba(245,240,232,0.75) !important;
-    font-size: 0.85rem;
+    color: rgba(247,243,236,0.6) !important;
+    font-size: 0.78rem !important;
+    font-family: 'Outfit', sans-serif !important;
 }
 [data-testid="stSidebar"] h1,
 [data-testid="stSidebar"] h2,
 [data-testid="stSidebar"] h3 {
-    color: var(--amber2) !important;
-    font-family: 'Playfair Display', serif;
+    color: var(--gold2) !important;
+    font-family: 'Outfit', sans-serif !important;
+    font-size: 0.65rem !important;
+    letter-spacing: 0.12em !important;
+    text-transform: uppercase !important;
+    font-weight: 600 !important;
+}
+[data-testid="stSidebar"] hr {
+    border-color: rgba(201,146,42,0.15) !important;
+    margin: 0.8rem 0 !important;
+}
+[data-testid="stSidebar"] .stRadio label {
+    font-size: 0.82rem !important;
+    color: rgba(247,243,236,0.8) !important;
+    font-family: 'Outfit', sans-serif !important;
+}
+[data-testid="stSidebar"] .stRadio [data-baseweb="radio"] [aria-checked="true"] ~ span {
+    color: var(--gold2) !important;
+    font-weight: 600 !important;
 }
 
 /* ── Headers ── */
 h1 {
-    font-family: 'Playfair Display', serif !important;
-    font-size: 2.8rem !important;
+    font-family: 'Cormorant Garamond', serif !important;
+    font-size: 3rem !important;
     font-weight: 700 !important;
-    color: var(--navy) !important;
-    letter-spacing: -0.02em;
-    line-height: 1.15;
+    color: var(--ink) !important;
+    letter-spacing: -0.01em;
+    line-height: 1.12;
 }
 h2 {
-    font-family: 'Playfair Display', serif !important;
-    font-size: 1.6rem !important;
+    font-family: 'Cormorant Garamond', serif !important;
+    font-size: 1.75rem !important;
     font-weight: 600 !important;
-    color: var(--navy) !important;
+    color: var(--ink) !important;
+    letter-spacing: -0.01em;
 }
 h3 {
-    font-family: 'DM Sans', sans-serif !important;
-    font-size: 1.1rem !important;
-    font-weight: 500 !important;
-    color: var(--navy2) !important;
+    font-family: 'Outfit', sans-serif !important;
+    font-size: 0.7rem !important;
+    font-weight: 600 !important;
+    color: var(--muted) !important;
     text-transform: uppercase;
-    letter-spacing: 0.06em;
+    letter-spacing: 0.12em;
 }
 
-/* ── Amber accent line ── */
+/* ── Gold accent line ── */
 .accent-line {
-    height: 3px;
-    width: 60px;
-    background: linear-gradient(90deg, var(--amber), var(--amber2));
+    height: 2px;
+    width: 48px;
+    background: linear-gradient(90deg, var(--gold), var(--gold3));
     border-radius: 2px;
-    margin: 0.4rem 0 1.5rem 0;
+    margin: 0.5rem 0 1.6rem 0;
 }
 
 /* ── Metric cards ── */
 .metric-card {
-    background: var(--navy);
-    border-radius: 12px;
-    padding: 1.4rem 1.6rem;
-    border-left: 4px solid var(--amber);
+    background: var(--ink2);
+    border-radius: 14px;
+    padding: 1.3rem 1.5rem;
+    border-top: 2px solid var(--gold);
     position: relative;
     overflow: hidden;
+    box-shadow: 0 4px 20px rgba(13,17,23,0.18);
 }
 .metric-card::after {
     content: '';
     position: absolute;
-    top: -30px; right: -30px;
-    width: 100px; height: 100px;
+    bottom: -20px; right: -20px;
+    width: 80px; height: 80px;
     border-radius: 50%;
-    background: rgba(212,146,42,0.07);
+    background: rgba(201,146,42,0.06);
 }
 .metric-card .val {
-    font-family: 'Playfair Display', serif;
-    font-size: 2rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.1rem;
     font-weight: 700;
-    color: var(--amber2);
+    color: var(--gold2);
     line-height: 1;
 }
 .metric-card .lbl {
-    font-size: 0.75rem;
-    font-weight: 500;
-    color: rgba(245,240,232,0.6);
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: rgba(247,243,236,0.5);
     text-transform: uppercase;
-    letter-spacing: 0.08em;
-    margin-top: 0.35rem;
+    letter-spacing: 0.1em;
+    margin-top: 0.4rem;
 }
 .metric-card .sub {
-    font-size: 0.8rem;
-    color: rgba(245,240,232,0.45);
-    margin-top: 0.2rem;
+    font-size: 0.75rem;
+    color: rgba(247,243,236,0.3);
+    margin-top: 0.15rem;
 }
 
 /* ── Book recommendation cards ── */
 .book-card {
     background: var(--card-bg);
     border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 1.4rem 1.6rem;
-    margin-bottom: 0.85rem;
+    border-radius: 12px;
+    padding: 1.2rem 1.5rem 1.2rem 1.8rem;
+    margin-bottom: 0.7rem;
     display: flex;
     align-items: flex-start;
     gap: 1.2rem;
-    transition: box-shadow 0.2s, border-color 0.2s;
+    transition: box-shadow 0.22s ease, border-color 0.22s ease, transform 0.22s ease;
     position: relative;
     overflow: hidden;
 }
@@ -177,119 +209,191 @@ h3 {
     content: '';
     position: absolute;
     left: 0; top: 0; bottom: 0;
-    width: 4px;
-    background: linear-gradient(180deg, var(--amber), var(--amber2));
-    border-radius: 4px 0 0 4px;
+    width: 3px;
+    background: linear-gradient(180deg, var(--gold), var(--gold3));
+    border-radius: 3px 0 0 3px;
 }
 .book-card:hover {
-    box-shadow: 0 6px 24px rgba(15,31,61,0.10);
-    border-color: var(--amber);
+    box-shadow: 0 8px 28px rgba(13,17,23,0.09);
+    border-color: rgba(201,146,42,0.4);
+    transform: translateY(-1px);
 }
 .book-rank {
-    font-family: 'Playfair Display', serif;
-    font-size: 2rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.8rem;
     font-weight: 700;
-    color: var(--cream2);
+    color: var(--ivory3);
     line-height: 1;
-    min-width: 2.2rem;
+    min-width: 2rem;
     text-align: center;
+    padding-top: 0.1rem;
 }
 .book-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.05rem;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem;
     font-weight: 600;
-    color: var(--navy);
-    line-height: 1.35;
-    margin-bottom: 0.2rem;
+    color: var(--ink);
+    line-height: 1.3;
+    margin-bottom: 0.18rem;
 }
 .book-author {
-    font-size: 0.85rem;
+    font-size: 0.82rem;
     color: var(--muted);
     font-weight: 400;
-    margin-bottom: 0.6rem;
+    margin-bottom: 0.5rem;
 }
 .score-pill {
     display: inline-block;
-    background: linear-gradient(135deg, var(--amber), var(--amber2));
-    color: var(--navy);
-    font-size: 0.7rem;
+    background: linear-gradient(135deg, var(--gold), var(--gold2));
+    color: var(--ink);
+    font-size: 0.65rem;
     font-weight: 700;
-    padding: 0.2rem 0.7rem;
+    padding: 0.18rem 0.65rem;
     border-radius: 20px;
-    letter-spacing: 0.04em;
+    letter-spacing: 0.05em;
     text-transform: uppercase;
-    margin-right: 0.4rem;
+    margin-right: 0.35rem;
 }
 .score-pill.cb {
-    background: linear-gradient(135deg, #3b82f6, #6366f1);
+    background: linear-gradient(135deg, #4f8ef7, #818cf8);
     color: #fff;
 }
 .score-pill.hybrid {
-    background: linear-gradient(135deg, var(--navy), var(--navy2));
-    color: var(--amber2);
+    background: var(--ink);
+    color: var(--gold2);
 }
 
-/* ── Info banner ── */
-.info-banner {
-    background: linear-gradient(135deg, var(--navy) 0%, var(--navy2) 100%);
-    border-radius: 14px;
-    padding: 1.8rem 2rem;
+/* ── Hero banner ── */
+.hero-banner {
+    background: linear-gradient(135deg, var(--ink) 0%, var(--ink3) 100%);
+    border-radius: 18px;
+    padding: 2.2rem 2.6rem;
     margin-bottom: 2rem;
-    border: 1px solid rgba(212,146,42,0.25);
+    border: 1px solid rgba(201,146,42,0.2);
     position: relative;
     overflow: hidden;
+    box-shadow: 0 8px 32px rgba(13,17,23,0.14);
 }
-.info-banner::after {
+.hero-banner::before {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 220px; height: 220px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(201,146,42,0.12) 0%, transparent 70%);
+}
+.hero-banner::after {
     content: '📚';
     position: absolute;
-    right: 2rem;
-    top: 50%;
-    transform: translateY(-50%);
-    font-size: 4rem;
-    opacity: 0.12;
+    right: 2.5rem;
+    bottom: 1rem;
+    font-size: 5rem;
+    opacity: 0.07;
+    pointer-events: none;
 }
-.info-banner h2 {
-    color: var(--cream) !important;
-    font-family: 'Playfair Display', serif !important;
-    margin: 0 0 0.4rem 0;
+.hero-banner h2 {
+    color: var(--ivory) !important;
+    font-family: 'Cormorant Garamond', serif !important;
+    font-size: 1.6rem !important;
+    font-weight: 600 !important;
+    margin: 0 0 0.5rem 0;
+    letter-spacing: 0 !important;
+    text-transform: none !important;
 }
-.info-banner p {
-    color: rgba(245,240,232,0.7) !important;
-    font-size: 0.9rem;
+.hero-banner p {
+    color: rgba(247,243,236,0.65) !important;
+    font-size: 0.88rem !important;
     margin: 0;
-    line-height: 1.6;
+    line-height: 1.65;
+    max-width: 560px;
+}
+
+/* ── Mode selector tabs ── */
+.mode-tab-row {
+    display: flex;
+    gap: 0.6rem;
+    margin-bottom: 1.6rem;
+}
+.mode-tab {
+    flex: 1;
+    background: #fff;
+    border: 1.5px solid var(--border);
+    border-radius: 12px;
+    padding: 1rem 1.2rem;
+    cursor: pointer;
+    transition: all 0.18s ease;
+    text-align: left;
+}
+.mode-tab.active {
+    border-color: var(--gold);
+    background: linear-gradient(135deg, rgba(201,146,42,0.06), rgba(232,184,75,0.04));
+    box-shadow: 0 2px 12px rgba(201,146,42,0.12);
+}
+.mode-tab .mt-icon { font-size: 1.4rem; margin-bottom: 0.4rem; }
+.mode-tab .mt-label {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--ink);
+}
+.mode-tab .mt-desc {
+    font-size: 0.75rem;
+    color: var(--muted);
+    margin-top: 0.15rem;
+}
+
+/* ── Settings inline row (main page) ── */
+.settings-row {
+    background: #fff;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1rem 1.4rem;
+    margin-bottom: 1.6rem;
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.settings-row .sr-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    font-weight: 600;
+    margin-bottom: 0.15rem;
 }
 
 /* ── Section divider ── */
 .divider {
     border: none;
     border-top: 1px solid var(--border);
-    margin: 2rem 0;
+    margin: 1.8rem 0;
 }
 
 /* ── Pipeline step badges ── */
 .pipeline-step {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
-    background: var(--cream2);
+    gap: 0.4rem;
+    background: var(--ivory2);
     border: 1px solid var(--border);
     border-radius: 8px;
-    padding: 0.45rem 0.9rem;
-    font-size: 0.8rem;
+    padding: 0.35rem 0.75rem;
+    font-size: 0.75rem;
     font-weight: 500;
-    color: var(--navy);
-    margin: 0.2rem;
+    color: var(--ink);
+    margin: 0.15rem;
+    font-family: 'Outfit', sans-serif;
 }
 .step-num {
-    background: var(--amber);
-    color: var(--navy);
+    background: var(--gold);
+    color: var(--ink);
     border-radius: 50%;
-    width: 18px; height: 18px;
+    width: 16px; height: 16px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.7rem;
+    font-size: 0.65rem;
     font-weight: 700;
 }
 
@@ -300,67 +404,72 @@ h3 {
     border-radius: 10px;
     padding: 1rem 1.2rem;
     font-size: 0.88rem;
-    color: #92400e;
+    color: #78350f;
 }
 
 /* ── Streamlit widgets overrides ── */
 .stButton > button {
-    background: linear-gradient(135deg, var(--navy) 0%, var(--navy2) 100%) !important;
-    color: var(--amber2) !important;
-    border: 1px solid rgba(212,146,42,0.4) !important;
+    background: linear-gradient(135deg, var(--ink) 0%, var(--ink3) 100%) !important;
+    color: var(--gold2) !important;
+    border: 1px solid rgba(201,146,42,0.35) !important;
     border-radius: 10px !important;
-    font-family: 'DM Sans', sans-serif !important;
+    font-family: 'Outfit', sans-serif !important;
     font-weight: 600 !important;
-    font-size: 1rem !important;
-    padding: 0.75rem 2.5rem !important;
-    letter-spacing: 0.03em;
-    transition: all 0.2s !important;
+    font-size: 0.95rem !important;
+    padding: 0.7rem 2.2rem !important;
+    letter-spacing: 0.04em;
+    transition: all 0.2s ease !important;
 }
 .stButton > button:hover {
-    background: linear-gradient(135deg, #1a3460 0%, #1e3d6b 100%) !important;
-    border-color: var(--amber) !important;
-    box-shadow: 0 4px 20px rgba(15,31,61,0.25) !important;
+    background: linear-gradient(135deg, #1e2a3a 0%, #243040 100%) !important;
+    border-color: var(--gold) !important;
+    box-shadow: 0 4px 18px rgba(13,17,23,0.22) !important;
     transform: translateY(-1px);
 }
 .stTextInput > div > div > input,
 .stSelectbox > div > div > div {
     border-radius: 10px !important;
     border-color: var(--border) !important;
-    font-family: 'DM Sans', sans-serif !important;
+    font-family: 'Outfit', sans-serif !important;
     background: #fff !important;
+    color: var(--ink) !important;
 }
 .stTextInput > div > div > input:focus {
-    border-color: var(--amber) !important;
-    box-shadow: 0 0 0 2px rgba(212,146,42,0.15) !important;
+    border-color: var(--gold) !important;
+    box-shadow: 0 0 0 2px rgba(201,146,42,0.15) !important;
 }
 .stSlider > div > div > div > div {
-    background: var(--amber) !important;
+    background: var(--gold) !important;
+}
+.stRadio [data-baseweb="radio"] {
+    gap: 0.3rem !important;
 }
 
 /* ── Tab overrides ── */
 .stTabs [data-baseweb="tab-list"] {
-    gap: 0.5rem;
+    gap: 0.4rem;
     background: transparent;
-    border-bottom: 2px solid var(--border);
+    border-bottom: 1.5px solid var(--border);
 }
 .stTabs [data-baseweb="tab"] {
-    font-family: 'DM Sans', sans-serif !important;
+    font-family: 'Outfit', sans-serif !important;
     font-weight: 500;
+    font-size: 0.88rem;
     color: var(--muted);
     background: transparent;
     border: none;
-    padding: 0.6rem 1.2rem;
+    padding: 0.55rem 1.1rem;
     border-radius: 8px 8px 0 0;
 }
 .stTabs [aria-selected="true"] {
-    color: var(--navy) !important;
-    background: rgba(212,146,42,0.1) !important;
-    border-bottom: 2px solid var(--amber) !important;
+    color: var(--ink) !important;
+    background: rgba(201,146,42,0.08) !important;
+    border-bottom: 2px solid var(--gold) !important;
 }
 
 /* ── Progress / spinner ── */
 .stSpinner > div {
-    border-top-color: var(--amber) !important;
+    border-top-color: var(--gold) !important;
 }
 
 /* ── Dataframe ── */
@@ -373,50 +482,81 @@ h3 {
 /* ── Sidebar logo area ── */
 .sidebar-logo {
     text-align: center;
-    padding: 1.5rem 1rem 1rem 1rem;
-    border-bottom: 1px solid rgba(212,146,42,0.2);
-    margin-bottom: 1.5rem;
+    padding: 1.4rem 0.8rem 1rem 0.8rem;
+    border-bottom: 1px solid rgba(201,146,42,0.18);
+    margin-bottom: 1.2rem;
 }
-.sidebar-logo .icon { font-size: 2.5rem; }
+.sidebar-logo .icon { font-size: 2rem; }
 .sidebar-logo .title {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.3rem;
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.05rem;
     font-weight: 700;
-    color: var(--amber2);
+    color: var(--gold2);
     line-height: 1.2;
-    margin-top: 0.5rem;
+    margin-top: 0.4rem;
+    letter-spacing: 0.03em;
 }
 .sidebar-logo .sub {
-    font-size: 0.72rem;
-    color: rgba(245,240,232,0.45);
-    margin-top: 0.25rem;
-    letter-spacing: 0.05em;
+    font-size: 0.62rem;
+    color: rgba(247,243,236,0.35);
+    margin-top: 0.2rem;
+    letter-spacing: 0.07em;
     text-transform: uppercase;
 }
 
 /* ── Cache badge ── */
 .cache-hit {
     display: inline-block;
-    background: rgba(22,163,74,0.12);
-    color: #15803d;
-    border: 1px solid rgba(22,163,74,0.3);
+    background: rgba(34,197,94,0.1);
+    color: #16a34a;
+    border: 1px solid rgba(34,197,94,0.25);
     border-radius: 20px;
-    padding: 0.15rem 0.65rem;
-    font-size: 0.72rem;
+    padding: 0.12rem 0.6rem;
+    font-size: 0.7rem;
     font-weight: 600;
     vertical-align: middle;
 }
 .cache-miss {
     display: inline-block;
-    background: rgba(212,146,42,0.1);
+    background: rgba(201,146,42,0.1);
     color: #92400e;
-    border: 1px solid rgba(212,146,42,0.3);
+    border: 1px solid rgba(201,146,42,0.25);
     border-radius: 20px;
-    padding: 0.15rem 0.65rem;
-    font-size: 0.72rem;
+    padding: 0.12rem 0.6rem;
+    font-size: 0.7rem;
     font-weight: 600;
     vertical-align: middle;
 }
+
+/* ── User profile strip ── */
+.profile-strip {
+    background: linear-gradient(135deg, var(--ink) 0%, var(--ink3) 100%);
+    border-radius: 12px;
+    padding: 1.1rem 1.6rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    gap: 2.5rem;
+    flex-wrap: wrap;
+    align-items: center;
+    border: 1px solid rgba(201,146,42,0.18);
+    box-shadow: 0 4px 16px rgba(13,17,23,0.12);
+}
+.profile-strip .ps-item .ps-label {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(247,243,236,0.45);
+    font-weight: 600;
+    margin-bottom: 0.15rem;
+}
+.profile-strip .ps-item .ps-val {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--ivory);
+    line-height: 1.1;
+}
+.profile-strip .ps-item .ps-val.gold { color: var(--gold2); }
 </style>
 """, unsafe_allow_html=True)
 
@@ -485,11 +625,11 @@ def load_data():
 
     # Try Google Drive path first (Colab), then local
     base_paths = [
-    "/content",
-    "/content/drive/MyDrive",
-    ".",
-    "./data",
-]
+        "/content",
+        "/content/drive/MyDrive",
+        ".",
+        "./data",
+    ]
 
     books_df = ratings_df = users_df = None
 
@@ -712,7 +852,7 @@ with st.sidebar:
     </div>
     """, unsafe_allow_html=True)
 
-    st.markdown("### Navigation")
+    st.markdown("### Navigate")
     page = st.radio(
         "",
         ["🔍 Get Recommendations", "📊 System Dashboard", "📖 How It Works"],
@@ -720,31 +860,31 @@ with st.sidebar:
     )
 
     st.markdown("---")
-    st.markdown("### Settings")
 
-    n_recs = st.slider("Number of recommendations", 5, 20, 10)
-    min_rating = st.slider("Min rating threshold (for user history)", 1, 10, 6)
-    use_mmr = st.checkbox("Apply MMR diversity injection", value=True)
-    show_scores = st.checkbox("Show detailed scores", value=False)
+    # Compact settings — sliders only in sidebar, checkboxes on main page
+    n_recs    = st.slider("Results", 5, 20, 10)
+    min_rating = st.slider("Min rating", 1, 10, 6)
+    use_mmr   = st.checkbox("MMR diversity", value=True)
+    show_scores = st.checkbox("Show scores", value=False)
 
     st.markdown("---")
-    st.markdown("### System Stats")
+    st.markdown("### Stats")
     cache = st.session_state.lru_cache
     st.markdown(f"""
-    <div style="font-size:0.82rem; color:rgba(245,240,232,0.6); line-height:2;">
-    Cache entries: <b style="color:#f0b849">{len(cache.cache)}/100</b><br>
-    Hit rate: <b style="color:#f0b849">{cache.hit_rate:.1f}%</b><br>
-    Queries run: <b style="color:#f0b849">{len(st.session_state.query_history)}</b>
+    <div style="font-size:0.78rem; color:rgba(247,243,236,0.5); line-height:2.1;">
+    Cache: <b style="color:#e8b84b">{len(cache.cache)}/100</b><br>
+    Hit rate: <b style="color:#e8b84b">{cache.hit_rate:.1f}%</b><br>
+    Queries: <b style="color:#e8b84b">{len(st.session_state.query_history)}</b>
     </div>
     """, unsafe_allow_html=True)
 
     st.markdown("---")
     st.markdown("""
-    <div style="font-size:0.72rem; color:rgba(245,240,232,0.3); line-height:1.8;">
+    <div style="font-size:0.65rem; color:rgba(247,243,236,0.25); line-height:1.9; letter-spacing:0.02em;">
     Book-Crossing Dataset<br>
     1.1M ratings · 270K books<br>
     Lambda Architecture<br>
-    ALS + TF-IDF Hybrid ML
+    ALS + TF-IDF Hybrid
     </div>
     """, unsafe_allow_html=True)
 
@@ -774,10 +914,6 @@ if "Recommendations" in page:
     st.markdown("""
     <h1>Discover Your Next<br><em>Great Read</em></h1>
     <div class="accent-line"></div>
-    <p style="color:#6b7280; font-size:1rem; margin-bottom:2rem; max-width:560px;">
-    A large-scale hybrid recommendation engine using collaborative filtering,
-    TF-IDF content similarity, and MMR diversity — trained on 1.1 million ratings.
-    </p>
     """, unsafe_allow_html=True)
 
     if not data_loaded:
@@ -794,20 +930,106 @@ if "Recommendations" in page:
         """, unsafe_allow_html=True)
         st.stop()
 
-    # ── Input form ──
-    col1, col2 = st.columns([3, 2])
+    # ── Hero banner with quick-stats (when data is loaded) ──
+    n_books_stat  = len(books_clean)
+    n_users_stat  = users_clean["User-ID"].nunique()
+    n_rating_stat = len(explicit_ratings)
+    st.markdown(f"""
+    <div class="hero-banner">
+        <h2>Hybrid ML · Lambda Architecture</h2>
+        <p>
+        Collaborative filtering + TF-IDF content similarity + MMR diversity —
+        trained on <b style="color:#e8b84b">{n_rating_stat:,}</b> explicit ratings across
+        <b style="color:#e8b84b">{n_books_stat:,}</b> books and
+        <b style="color:#e8b84b">{n_users_stat:,}</b> readers. Precision@10 = 0.86.
+        </p>
+    </div>
+    """, unsafe_allow_html=True)
 
-    with col1:
-        mode = st.radio(
-            "Search by",
-            ["👤 User ID", "📗 Book Title (content-based)"],
-            horizontal=True
-        )
+    # ── Mode selector — Book Title is first / default ──
+    mode = st.radio(
+        "Search by",
+        ["📗 Book Title (content-based)", "👤 User ID"],
+        horizontal=True
+    )
 
     st.markdown('<hr class="divider">', unsafe_allow_html=True)
 
-    if "User ID" in mode:
+    if "Book Title" in mode:
+        # ── CONTENT-BASED MODE (default) ──
         col_a, col_b = st.columns([2, 1])
+        with col_a:
+            book_query = st.text_input(
+                "Enter a book title",
+                placeholder="e.g. Harry Potter, The Da Vinci Code, Dune...",
+                help="Search for similar books based on author, publisher and year"
+            )
+        go2 = st.button("🔎 Find Similar Books", use_container_width=False)
+
+        if go2 and book_query:
+            if not data_loaded:
+                st.error("Dataset not loaded.")
+                st.stop()
+
+            cache_key = f"cb_{book_query}_{n_recs}"
+            cached = st.session_state.lru_cache.get(cache_key)
+
+            t_start = time.time()
+            if cached is not None:
+                cb_recs = cached
+                from_cache = True
+            else:
+                with st.spinner("Computing TF-IDF cosine similarity..."):
+                    cb_recs = cb_recommend(book_query, tfidf_matrix, books_cb, n=n_recs)
+                st.session_state.lru_cache.put(cache_key, cb_recs)
+                from_cache = False
+
+            elapsed = (time.time() - t_start) * 1000
+
+            cache_badge = (
+                '<span class="cache-hit">⚡ Cache HIT</span>'
+                if from_cache else
+                '<span class="cache-miss">🔄 Computed via TF-IDF</span>'
+            )
+            st.markdown(f"""
+            <div style="margin-bottom:1.5rem;">
+                {cache_badge}
+                <span style="font-size:0.8rem; color:#64748b; margin-left:0.5rem;">{elapsed:.1f}ms</span>
+            </div>
+            """, unsafe_allow_html=True)
+
+            if cb_recs.empty:
+                st.warning(f'No books found matching "{book_query}". Try a different title.')
+                st.stop()
+
+            st.markdown(f'## Books similar to *"{book_query}"*')
+            st.markdown('<div class="accent-line"></div>', unsafe_allow_html=True)
+
+            for i, row in cb_recs.iterrows():
+                title  = str(row.get("Book-Title", "Unknown"))[:80]
+                author = str(row.get("Book-Author", "Unknown"))[:50]
+                year   = int(row.get("Year-Of-Publication", 0))
+                sim    = float(row.get("similarity", 0))
+
+                st.markdown(f"""
+                <div class="book-card">
+                    <div class="book-rank">{i+1:02d}</div>
+                    <div style="flex:1;">
+                        <div class="book-title">{title}</div>
+                        <div class="book-author">by {author}{f" · {year}" if year > 1800 else ""}</div>
+                        <span class="score-pill cb">TF-IDF Similarity</span>
+                    </div>
+                    <div style="text-align:right; min-width:3.5rem;">
+                        <div style="font-family:'Cormorant Garamond',serif; font-size:1.4rem;
+                                    font-weight:700; color:#4f8ef7;">{sim:.3f}</div>
+                        <div style="font-size:0.65rem; color:#64748b; text-transform:uppercase;
+                                    letter-spacing:0.07em;">cosine</div>
+                    </div>
+                </div>
+                """, unsafe_allow_html=True)
+
+    else:
+        # ── USER ID MODE ──
         with col_a:
             # Sample some active users for the hint
             sample_users = (
@@ -894,32 +1116,30 @@ if "Recommendations" in page:
                 st.warning(f"No recommendations found for User ID {uid}. Try a different user.")
                 st.stop()
 
-            # ── User profile summary ──
             if not user_hist.empty:
                 avg_r = user_hist["Book-Rating"].mean()
                 top_genre = user_hist["Book-Author"].value_counts().index[0] if not user_hist.empty else "—"
                 st.markdown(f"""
-                <div style="background:#fff; border:1px solid #e5ddd0; border-radius:12px;
-                            padding:1rem 1.5rem; margin-bottom:1.5rem; display:flex; gap:2rem; flex-wrap:wrap;">
-                    <div>
-                        <div style="font-size:0.72rem; text-transform:uppercase; letter-spacing:0.06em; color:#6b7280;">User ID</div>
-                        <div style="font-family:'Playfair Display',serif; font-size:1.3rem; color:#0f1f3d; font-weight:700;">{uid}</div>
+                <div class="profile-strip">
+                    <div class="ps-item">
+                        <div class="ps-label">User ID</div>
+                        <div class="ps-val">{uid}</div>
                     </div>
-                    <div>
-                        <div style="font-size:0.72rem; text-transform:uppercase; letter-spacing:0.06em; color:#6b7280;">Books Rated</div>
-                        <div style="font-family:'Playfair Display',serif; font-size:1.3rem; color:#0f1f3d; font-weight:700;">{len(user_hist)}</div>
+                    <div class="ps-item">
+                        <div class="ps-label">Books Rated</div>
+                        <div class="ps-val">{len(user_hist)}</div>
                     </div>
-                    <div>
-                        <div style="font-size:0.72rem; text-transform:uppercase; letter-spacing:0.06em; color:#6b7280;">Avg Rating</div>
-                        <div style="font-family:'Playfair Display',serif; font-size:1.3rem; color:#0f1f3d; font-weight:700;">{avg_r:.1f} / 10</div>
+                    <div class="ps-item">
+                        <div class="ps-label">Avg Rating</div>
+                        <div class="ps-val">{avg_r:.1f}<span style="font-size:0.75rem; color:rgba(247,243,236,0.4)"> / 10</span></div>
                     </div>
-                    <div>
-                        <div style="font-size:0.72rem; text-transform:uppercase; letter-spacing:0.06em; color:#6b7280;">Favourite Author</div>
-                        <div style="font-family:'Playfair Display',serif; font-size:1.1rem; color:#0f1f3d; font-weight:600;">{top_genre[:30]}</div>
+                    <div class="ps-item">
+                        <div class="ps-label">Favourite Author</div>
+                        <div class="ps-val" style="font-size:1rem;">{top_genre[:28]}</div>
                     </div>
-                    <div>
-                        <div style="font-size:0.72rem; text-transform:uppercase; letter-spacing:0.06em; color:#6b7280;">Method</div>
-                        <div style="font-family:'Playfair Display',serif; font-size:1.1rem; color:#d4922a; font-weight:600;">{method.title()}</div>
+                    <div class="ps-item">
+                        <div class="ps-label">Method</div>
+                        <div class="ps-val gold" style="font-size:1rem;">{method.title()}</div>
                     </div>
                 </div>
                 """, unsafe_allow_html=True)
@@ -955,83 +1175,10 @@ if "Recommendations" in page:
                         {scores_html}
                     </div>
                     <div style="text-align:right; min-width:3.5rem;">
-                        <div style="font-family:'Playfair Display',serif; font-size:1.4rem;
-                                    font-weight:700; color:#d4922a;">{hybrid:.2f}</div>
-                        <div style="font-size:0.68rem; color:#6b7280; text-transform:uppercase;
-                                    letter-spacing:0.06em;">score</div>
-                    </div>
-                </div>
-                """, unsafe_allow_html=True)
-
-    else:
-        # ── CONTENT-BASED MODE ──
-        col_a, col_b = st.columns([2, 1])
-        with col_a:
-            book_query = st.text_input(
-                "Enter a book title",
-                placeholder="e.g. Harry Potter, The Da Vinci Code, Dune...",
-                help="Search for similar books based on author, publisher and year"
-            )
-        go2 = st.button("🔎 Find Similar Books", use_container_width=False)
-
-        if go2 and book_query:
-            if not data_loaded:
-                st.error("Dataset not loaded.")
-                st.stop()
-
-            cache_key = f"cb_{book_query}_{n_recs}"
-            cached = st.session_state.lru_cache.get(cache_key)
-
-            t_start = time.time()
-            if cached is not None:
-                cb_recs = cached
-                from_cache = True
-            else:
-                with st.spinner("Computing TF-IDF cosine similarity..."):
-                    cb_recs = cb_recommend(book_query, tfidf_matrix, books_cb, n=n_recs)
-                st.session_state.lru_cache.put(cache_key, cb_recs)
-                from_cache = False
-
-            elapsed = (time.time() - t_start) * 1000
-
-            cache_badge = (
-                '<span class="cache-hit">⚡ Cache HIT</span>'
-                if from_cache else
-                '<span class="cache-miss">🔄 Computed via TF-IDF</span>'
-            )
-            st.markdown(f"""
-            <div style="margin-bottom:1.5rem;">
-                {cache_badge}
-                <span style="font-size:0.8rem; color:#6b7280; margin-left:0.5rem;">{elapsed:.1f}ms</span>
-            </div>
-            """, unsafe_allow_html=True)
-
-            if cb_recs.empty:
-                st.warning(f'No books found matching "{book_query}". Try a different title.')
-                st.stop()
-
-            st.markdown(f'## Books similar to *"{book_query}"*')
-            st.markdown('<div class="accent-line"></div>', unsafe_allow_html=True)
-
-            for i, row in cb_recs.iterrows():
-                title  = str(row.get("Book-Title", "Unknown"))[:80]
-                author = str(row.get("Book-Author", "Unknown"))[:50]
-                year   = int(row.get("Year-Of-Publication", 0))
-                sim    = float(row.get("similarity", 0))
-
-                st.markdown(f"""
-                <div class="book-card">
-                    <div class="book-rank">{i+1:02d}</div>
-                    <div style="flex:1;">
-                        <div class="book-title">{title}</div>
-                        <div class="book-author">by {author}{f" · {year}" if year > 1800 else ""}</div>
-                        <span class="score-pill cb">TF-IDF Similarity</span>
-                    </div>
-                    <div style="text-align:right; min-width:3.5rem;">
-                        <div style="font-family:'Playfair Display',serif; font-size:1.4rem;
-                                    font-weight:700; color:#3b82f6;">{sim:.3f}</div>
-                        <div style="font-size:0.68rem; color:#6b7280; text-transform:uppercase;
-                                    letter-spacing:0.06em;">cosine</div>
+                        <div style="font-family:'Cormorant Garamond',serif; font-size:1.5rem;
+                                    font-weight:700; color:#c9922a;">{hybrid:.2f}</div>
+                        <div style="font-size:0.65rem; color:#64748b; text-transform:uppercase;
+                                    letter-spacing:0.07em;">score</div>
                     </div>
                 </div>
                 """, unsafe_allow_html=True)
@@ -1044,7 +1191,7 @@ elif "Dashboard" in page:
     st.markdown("""
     <h1>System Dashboard</h1>
     <div class="accent-line"></div>
-    <p style="color:#6b7280; margin-bottom:2rem;">Live metrics across all pipeline layers.</p>
+    <p style="color:#64748b; margin-bottom:2rem; font-size:0.95rem;">Live metrics across all pipeline layers.</p>
     """, unsafe_allow_html=True)
 
     if not data_loaded:
@@ -1159,7 +1306,7 @@ elif "How" in page:
     st.markdown("""
     <h1>How It Works</h1>
     <div class="accent-line"></div>
-    <p style="color:#6b7280; margin-bottom:2rem; max-width:640px;">
+    <p style="color:#64748b; margin-bottom:2rem; max-width:640px; font-size:0.95rem;">
     A plain-English walkthrough of the six milestones that make up this system,
     from raw CSV files to real-time recommendations.
     </p>
@@ -1215,8 +1362,8 @@ elif "How" in page:
                     margin-bottom:1.2rem; border:1px solid rgba(212,146,42,0.2);">
             <div style="display:flex; align-items:center; gap:0.8rem; margin-bottom:1rem;">
                 <span style="font-size:1.8rem;">{icon}</span>
-                <span style="font-family:'Playfair Display',serif; font-size:1.25rem;
-                             font-weight:700; color:#f0b849;">{title}</span>
+                <span style="font-family:'Cormorant Garamond',serif; font-size:1.25rem;
+                             font-weight:700; color:#e8b84b;">{title}</span>
             </div>
             <div style="font-size:0.9rem; color:rgba(245,240,232,0.75); line-height:1.8;">
                 {body}
@@ -1226,8 +1373,8 @@ elif "How" in page:
 
     st.markdown('<hr class="divider">', unsafe_allow_html=True)
     st.markdown("""
-    <div style="text-align:center; padding:2rem; color:#6b7280; font-size:0.85rem;">
-        Built for <b style="color:#0f1f3d;">SDS 2412 — Analysis of Large Datasets</b><br>
+    <div style="text-align:center; padding:2rem; color:#94a3b8; font-size:0.85rem;">
+        Built for <b style="color:#0d1117;">SDS 2412 — Analysis of Large Datasets</b><br>
         Jomo Kenyatta University of Agriculture and Technology · May 2026<br><br>
         Rodney Okoth · Sandra Jebet · Effie Auma · Leslie Gideon · Kandy Genga
     </div>
