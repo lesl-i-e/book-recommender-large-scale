@@ -485,11 +485,11 @@ def load_data():
 
     # Try Google Drive path first (Colab), then local
     base_paths = [
-        "/content",
-        "/content/drive/MyDrive",
-        ".",
-        "./data",
-    ]
+    "/content",
+    "/content/drive/MyDrive",
+    ".",
+    "./data",
+]
 
     books_df = ratings_df = users_df = None
 
