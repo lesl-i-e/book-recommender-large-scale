@@ -674,30 +674,35 @@ if "Recommendations" in page:
                     cf_n    = float(row.get("cf_norm",      0))
                     cb_n    = float(row.get("cb_norm",      0))
 
+                    # pre-compute all conditional strings BEFORE the markdown call
+                    year_str    = f" &nbsp;·&nbsp; {year}" if year > 1800 else ""
                     scores_html = ""
                     if show_scores:
                         scores_html = (
                             f'<span class="score-badge hybrid">Hybrid {score:.3f}</span>'
                             f'<span class="score-badge cb" style="margin-left:0.3rem;">'
-                            f'CF {cf_n:.2f} · CB {cb_n:.2f}</span>'
+                            f'CF {cf_n:.2f} &middot; CB {cb_n:.2f}</span>'
                         )
+                    rank_str  = f"{i+1:02d}"
+                    score_str = f"{score:.3f}"
 
-                    st.markdown(f"""
-                    <div class="book-card">
-                        <div class="book-rank">{i+1:02d}</div>
-                        <div style="flex:1; min-width:0;">
-                            <div class="book-title">{title}</div>
-                            <div class="book-author">by {author}{f" &nbsp;·&nbsp; {year}" if year > 1800 else ""}</div>
-                            {scores_html}
-                        </div>
-                        <div style="text-align:right; min-width:3rem; flex-shrink:0;">
-                            <div style="font-family:'Playfair Display',serif; font-size:1.45rem;
-                                        font-weight:700; color:#c9861f; line-height:1;">{score:.3f}</div>
-                            <div style="font-size:0.62rem; color:#9ca3af; text-transform:uppercase;
-                                        letter-spacing:0.06em;">score</div>
-                        </div>
-                    </div>
-                    """, unsafe_allow_html=True)
+                    st.markdown(
+                        f'<div class="book-card">'
+                        f'<div class="book-rank">{rank_str}</div>'
+                        f'<div style="flex:1; min-width:0;">'
+                        f'<div class="book-title">{title}</div>'
+                        f'<div class="book-author">by {author}{year_str}</div>'
+                        f'{scores_html}'
+                        f'</div>'
+                        f'<div style="text-align:right; min-width:3rem; flex-shrink:0;">'
+                        f'<div style="font-family:\'Playfair Display\',serif; font-size:1.45rem;'
+                        f' font-weight:700; color:#c9861f; line-height:1;">{score_str}</div>'
+                        f'<div style="font-size:0.62rem; color:#9ca3af; text-transform:uppercase;'
+                        f' letter-spacing:0.06em;">score</div>'
+                        f'</div>'
+                        f'</div>',
+                        unsafe_allow_html=True
+                    )
 
     # ══════════════════════════════════════════════
     # TAB 2 — BOOK TITLE SEARCH
@@ -790,29 +795,35 @@ if "Recommendations" in page:
                 st.markdown('<div class="accent-line"></div>', unsafe_allow_html=True)
 
                 for i, row in cb_recs.iterrows():
-                    title  = str(row.get("Book-Title",  "Unknown"))[:80]
-                    author = str(row.get("Book-Author", "Unknown"))[:50]
-                    year   = row.get("Year-Of-Publication", 0)
+                    title    = str(row.get("Book-Title",  "Unknown"))[:80]
+                    author   = str(row.get("Book-Author", "Unknown"))[:50]
+                    year     = row.get("Year-Of-Publication", 0)
                     try: year = int(year)
                     except: year = 0
-                    sim    = float(row.get("similarity", 0))
+                    sim      = float(row.get("similarity", 0))
 
-                    st.markdown(f"""
-                    <div class="book-card">
-                        <div class="book-rank">{i+1:02d}</div>
-                        <div style="flex:1; min-width:0;">
-                            <div class="book-title">{title}</div>
-                            <div class="book-author">by {author}{f" &nbsp;·&nbsp; {year}" if year > 1800 else ""}</div>
-                            <span class="score-badge cb">TF-IDF content match</span>
-                        </div>
-                        <div style="text-align:right; min-width:3rem; flex-shrink:0;">
-                            <div style="font-family:'Playfair Display',serif; font-size:1.45rem;
-                                        font-weight:700; color:#1d4ed8; line-height:1;">{sim:.3f}</div>
-                            <div style="font-size:0.62rem; color:#9ca3af; text-transform:uppercase;
-                                        letter-spacing:0.06em;">cosine</div>
-                        </div>
-                    </div>
-                    """, unsafe_allow_html=True)
+                    # pre-compute conditionals before markdown
+                    year_str  = f" &nbsp;·&nbsp; {year}" if year > 1800 else ""
+                    rank_str  = f"{i+1:02d}"
+                    sim_str   = f"{sim:.3f}"
+
+                    st.markdown(
+                        f'<div class="book-card">'
+                        f'<div class="book-rank">{rank_str}</div>'
+                        f'<div style="flex:1; min-width:0;">'
+                        f'<div class="book-title">{title}</div>'
+                        f'<div class="book-author">by {author}{year_str}</div>'
+                        f'<span class="score-badge cb">TF-IDF content match</span>'
+                        f'</div>'
+                        f'<div style="text-align:right; min-width:3rem; flex-shrink:0;">'
+                        f'<div style="font-family:\'Playfair Display\',serif; font-size:1.45rem;'
+                        f' font-weight:700; color:#1d4ed8; line-height:1;">{sim_str}</div>'
+                        f'<div style="font-size:0.62rem; color:#9ca3af; text-transform:uppercase;'
+                        f' letter-spacing:0.06em;">cosine</div>'
+                        f'</div>'
+                        f'</div>',
+                        unsafe_allow_html=True
+                    )
 
     # ══════════════════════════════════════════════
     # USER SUBMISSION FORM — shown when no results
